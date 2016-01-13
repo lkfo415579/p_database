@@ -12,8 +12,13 @@ sys.setdefaultencoding('utf8')
 
 from pixivpy2 import *
 
-_USERNAME = "gm415579"
-_PASSWORD = "qq321520"
+from database import tool
+
+from database import config
+
+_USERNAME = config._USERNAME
+_PASSWORD = config._PASSWORD
+
 
 # def sapi_demo(api):
 # 	print(">>> ranking(male, day, page=1)")
@@ -71,7 +76,7 @@ def papi_demo(api):
 	
 def fetch_image(api,ranking,per_page):
 	import shutil
-	from database import tool
+	
 	#path = prepath+'images'
 	path = prepath
 	#print type(id_list)
@@ -99,7 +104,9 @@ def fetch_image(api,ranking,per_page):
 		#database
 		#use work to insert data
 		work = img.work
-		tool.database_insertation(work)
+		work['rank'] = img.rank
+		work['previous_rank'] = img.previous_rank
+		tool.database_insertation(work,info_log)
 		################
 		##retrieve image data
 		#sys.exit()
@@ -139,6 +146,11 @@ def main():
 			date = '%s-%02d-%02d' % (year,month,day)
 			id_list = []
 			id_list = migrate_sapi_to_papi(api,mode,per_page,date)
+			#for database
+			#page = 1
+			global info_log
+			info_log ={'page':1,'mode':mode,'per_page':per_page,'date':date}
+			#
 			fetch_image(api,id_list,per_page)
 
 if __name__ == '__main__':

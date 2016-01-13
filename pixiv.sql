@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50544
 File Encoding         : 65001
 
-Date: 2016-01-12 21:35:11
+Date: 2016-01-13 19:20:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,10 +20,11 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `info_log`;
 CREATE TABLE `info_log` (
-  `page` varchar(255) DEFAULT NULL,
-  `mode` varchar(255) DEFAULT NULL,
+  `page` varchar(255) NOT NULL,
+  `mode` varchar(255) NOT NULL,
   `per_page` varchar(255) DEFAULT NULL,
-  `date` datetime DEFAULT NULL
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`date`,`page`,`mode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -64,9 +65,6 @@ CREATE TABLE `pictures` (
 -- ----------------------------
 -- Records of pictures
 -- ----------------------------
-INSERT INTO `pictures` VALUES ('47866898', '2014-12-31 00:48:48', null, '4', '877', '2014-12-31 00:48:00', null, '「目の描き方を考える。」', '620', 'none', 'all-age', null, null, '0', null, null, null, null, 'manga', 'white', null, null, null);
-INSERT INTO `pictures` VALUES ('47878234', '2014-12-31 16:22:52', null, '1', '684', '2014-12-31 16:22:00', null, '２０１４最後の夕焼け', '1200', 'none', 'all-age', null, null, '0', null, null, null, null, 'illustration', 'white', null, null, null);
-INSERT INTO `pictures` VALUES ('47899157', '2015-01-01 00:59:42', null, '1', '1206', '2015-01-01 00:59:00', null, 'あけまして', '1154', 'none', 'all-age', null, null, '0', null, null, null, null, 'illustration', 'white', null, null, null);
 
 -- ----------------------------
 -- Table structure for stats
@@ -90,6 +88,7 @@ CREATE TABLE `stats` (
 DROP TABLE IF EXISTS `sys_log`;
 CREATE TABLE `sys_log` (
   `start_date` datetime DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
   `accesstoken` varchar(255) DEFAULT NULL,
   `session` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -97,6 +96,7 @@ CREATE TABLE `sys_log` (
 -- ----------------------------
 -- Records of sys_log
 -- ----------------------------
+INSERT INTO `sys_log` VALUES ('2016-01-13 19:19:48', 'gm415579', null, null);
 
 -- ----------------------------
 -- Table structure for user

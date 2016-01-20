@@ -48,19 +48,31 @@ def migrate_sapi_to_papi(api,mode,per_page,date):
 	#mode = 'weekly_r18'
 	#per_page = 30
 	#date = '2015-06-12'
-	print(">>> new ranking_all(mode='%s', page=1, per_page=%d , date=%s)" % (mode,per_page,date),file=r_f)
-	print(">>> new ranking_all(mode='%s', page=1, per_page=%d , date=%s)" % (mode,per_page,date))
+	page = int(per_page/10)
+	
+	print(">>> new ranking_all(mode='%s', page=%d, per_page=%d , date=%s)" % (mode,page,per_page,date),file=r_f)
+	print(">>> new ranking_all(mode='%s', page=%d, per_page=%d , date=%s)" % (mode,page,per_page,date))
 	#rank_list = api.sapi.ranking("all", 'day', 1)
 	#rank_list = api.papi.ranking_all('daily', 1, 50)
-	rank_list = api.papi.ranking_all(mode, 1, per_page, date=date)
-	#print rank_list
+	##first one
+	rank_list = api.papi.ranking_all(mode,1, per_page, date=date)
+	
+	tmp_rank_list = []
+	for x_page in range(2,page+1):
+		tmp_rank_list.append(api.papi.ranking_all(mode,x_page, per_page, date=date).response[0])
+	
 
 	# more fields about response: https://github.com/upbit/pixivpy/wiki/sniffer
 	ranking = rank_list.response[0]
+	#print (ranking)
+	for node in tmp_rank_list:
+		ranking['works'] = ranking['works'] +node['works']
+	###combine all pages info together####
 	#print ranking
 	#for img in ranking.works:
 		#print img.work
 		#print "[%s/%s(id=%s)] %s" % (img.work.user.name, img.work.title, img.work.id, img.work.image_urls.px_480mw)
+	
 	return ranking
 def papi_demo(api):
 	json_result = api.papi.works(46363414)
@@ -120,14 +132,17 @@ def fetch_image(api,ranking,per_page):
 		pic_name = str(u_name+'-'+p_name+'('+str(id)+')')
 		pic_name = ''.join(e for e in pic_name if e != "/")
 		print ("Picture name : %s" % pic_name)
-		
-		with open("%s/%s.%s" % (path,pic_name,type), 'wb') as out_file:
-			shutil.copyfileobj(image_data, out_file)
+		###
+		pic_path = "%s/%s.%s" % (path,pic_name,type)
+		import os.path
+		if not os.path.isfile(pic_path):
+			with open(pic_path, 'wb') as out_file:
+				shutil.copyfileobj(image_data, out_file)
 		#f = open("%s%s.jpg" % (path,id), 'wb')
 		#f.write(image_data)
 		#f.close()
 		##########end , write into database###
-		work['image_files_name'] = "%s/%s.%s" % (path,pic_name,type)
+		work['image_files_name'] = pic_path
 		tool.database_insertation(work,info_log)
 		
 		if index > per_page-1:
@@ -152,19 +167,21 @@ def main():
 		os.makedirs(prepath)
 	print ('FOLDER PATH : %s' % prepath)
 	print ('FOLDER PATH : %s' % prepath,file=r_f)
-	for month in range(1,13):
+	for month in range(5,13):
 		####
 
 		#mode = 'weekly'
-		per_page = 10
+		per_page = 20
 		for day in range(1,32):
 			date = '%s-%02d-%02d' % (year,month,day)
 			id_list = []
 			id_list = migrate_sapi_to_papi(api,mode,per_page,date)
+			
+			print ("Total images of this day : %d" % len(id_list['works']))
 			#for database
 			#page = 1
 			global info_log
-			info_log ={'page':1,'mode':mode,'per_page':per_page,'date':date}
+			info_log ={'page':int(per_page/10),'mode':mode,'per_page':per_page,'date':date}
 			#
 			fetch_image(api,id_list,per_page)
 

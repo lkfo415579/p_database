@@ -82,7 +82,8 @@ def fetch_image(api,ranking,per_page):
 	#print type(id_list)
 	#print ">>> origin url: %s" % node.image_urls['large']
 	#illust = id_list[0]
-	print (ranking)
+	###BIG DISPLAY###
+	#print (ranking)
 	
 	index = 0
 	for img in ranking.works:
@@ -106,22 +107,36 @@ def fetch_image(api,ranking,per_page):
 		work = img.work
 		work['rank'] = img.rank
 		work['previous_rank'] = img.previous_rank
-		tool.database_insertation(work,info_log)
+		#
+		user = work['user']
+		#
 		################
 		##retrieve image data
 		#sys.exit()
 		image_data = api.papi.get_image(ori_url)
-		#print image_data
-		with open("%s/%s_%s.%s" % (path,rank,id,type), 'wb') as out_file:
+		#picture_name
+		u_name = str(user.name.decode('utf8'))
+		p_name = str(img.work.title.decode('utf8'))
+		pic_name = str(u_name+'-'+p_name+'('+str(id)+')')
+		pic_name = ''.join(e for e in pic_name if e != "/")
+		print ("Picture name : %s" % pic_name)
+		
+		with open("%s/%s.%s" % (path,pic_name,type), 'wb') as out_file:
 			shutil.copyfileobj(image_data, out_file)
 		#f = open("%s%s.jpg" % (path,id), 'wb')
 		#f.write(image_data)
 		#f.close()
+		##########end , write into database###
+		work['image_files_name'] = "%s/%s.%s" % (path,pic_name,type)
+		tool.database_insertation(work,info_log)
+		
 		if index > per_page-1:
 			break
 	#print ">>> origin url: %s" % illust.image_urls['large']
 
 
+	
+	
 def main():
 	api = PixivAPI()
 

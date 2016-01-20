@@ -23,25 +23,46 @@ def Main_database_insert(insert_dict,info_log,user,stats):
 	dbc.execute('SET character_set_connection=utf8;')
 	#insert_dict = {'drink':'horchata', 'price':10}
 
+	#log writting
 	try:
 		###write_sys_log only first time##
 		sys_log_OT(db,dbc)
 		##############
 		###insert_info_log
 		sql_infolog = sql_insertFromDict("info_log", info_log)
-		#dbc.execute()
-		###insert pictures
-		sql_pic = sql_insertFromDict("pictures", insert_dict)
-		#print ("SQL")
-		#print (sql)
 		dbc.execute(sql_infolog, info_log)
-		db.commit()
-		dbc.execute(sql_pic, insert_dict)
 		db.commit()
 	except MySQLdb.Error, e:
 		try:
 			if e.args[0] != 1062:
 				print "MySQL Error [%d]: %s" % (e.args[0], e.args[1])
+		except IndexError:
+			print "MySQL Error: %s" % str(e)
+	#real data writting
+	try:
+		#dbc.execute()
+		###insert pictures
+		sql_pic = sql_insertFromDict("pictures", insert_dict)
+		##insert user
+		sql_user = sql_insertFromDict("user", user)
+		##insert stats
+		sql_stats = sql_insertFromDict("stats", stats)
+		#print ("SQL")
+		#print (sql)
+		dbc.execute(sql_pic, insert_dict)
+		db.commit()
+		dbc.execute(sql_user, user)
+		db.commit()
+		dbc.execute(sql_stats, stats)
+		db.commit()
+		print ("Updated Database!")
+	except MySQLdb.Error, e:
+		try:
+			if e.args[0] != 1062:
+				print "MySQL Error [%d]: %s" % (e.args[0], e.args[1])
+			else:
+				print "@Has already exited data"
+			#print "MySQL Error [%d]: %s" % (e.args[0], e.args[1])
 			
 		except IndexError:
 			print "MySQL Error: %s" % str(e)
@@ -90,12 +111,18 @@ def process_tags(tags):
 	return tmp_string
 	
 def database_insertation(work,info_log):
-	print ("Updated Database!")
+	#print ("Updated Database!")
 	#delete all unnecessary data
 	items = ["image_urls","user","stats"]
 	image_urls = work["image_urls"]
+	#
 	user = work["user"]
+	user['user_id'] = user['id']
+	user['id'] = work['id']
+	##
 	stats = work["stats"]
+	stats['id'] = work['id']
+	stats['date'] = info_log['date']
 	#print (work)
 	for item in items:
 		del work[item]

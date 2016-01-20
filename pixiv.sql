@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50544
 File Encoding         : 65001
 
-Date: 2016-01-13 19:20:55
+Date: 2016-01-20 19:41:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,6 +37,7 @@ CREATE TABLE `info_log` (
 DROP TABLE IF EXISTS `pictures`;
 CREATE TABLE `pictures` (
   `id` int(11) NOT NULL,
+  `rank` int(11) NOT NULL,
   `reuploaded_time` datetime DEFAULT NULL,
   `is_liked` varchar(255) DEFAULT NULL,
   `page_count` int(11) DEFAULT NULL,
@@ -58,8 +59,7 @@ CREATE TABLE `pictures` (
   `sanity_level` varchar(255) DEFAULT NULL,
   `favorite_id` int(11) DEFAULT NULL,
   `previous_rank` int(11) DEFAULT NULL,
-  `rank` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`,`rank`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -71,11 +71,14 @@ CREATE TABLE `pictures` (
 -- ----------------------------
 DROP TABLE IF EXISTS `stats`;
 CREATE TABLE `stats` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `date` datetime NOT NULL,
   `views_count` int(11) DEFAULT NULL,
   `score` int(11) DEFAULT NULL,
   `scored_count` int(11) DEFAULT NULL,
-  `commented_count` int(11) DEFAULT NULL
+  `commented_count` int(11) DEFAULT NULL,
+  `favorited_count` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`,`date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -96,7 +99,27 @@ CREATE TABLE `sys_log` (
 -- ----------------------------
 -- Records of sys_log
 -- ----------------------------
-INSERT INTO `sys_log` VALUES ('2016-01-13 19:19:48', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 17:57:05', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 17:58:01', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 17:58:43', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 18:58:02', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 18:59:54', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:02:09', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:06:10', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:07:21', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:07:34', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:08:25', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:09:21', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:15:12', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:15:53', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:16:04', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:26:34', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:26:49', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:29:36', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:32:00', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:32:12', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:35:38', 'gm415579', null, null);
+INSERT INTO `sys_log` VALUES ('2016-01-20 19:36:44', 'gm415579', null, null);
 
 -- ----------------------------
 -- Table structure for user

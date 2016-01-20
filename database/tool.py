@@ -14,7 +14,7 @@ def sys_log_OT(db,dbc):
 
 def Main_database_insert(insert_dict,info_log,user,stats):
 	import MySQLdb
-	
+	from database import config
 	db = MySQLdb.connect(host=config.host, user='lkfo', passwd='qq321520', db='pixiv')
 	db.set_character_set('utf8')
 	dbc= db.cursor()

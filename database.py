@@ -59,15 +59,21 @@ def migrate_sapi_to_papi(api,mode,per_page,date):
 	
 	tmp_rank_list = []
 	for x_page in range(2,page+1):
-		tmp_rank_list.append(api.papi.ranking_all(mode,x_page, per_page, date=date).response[0])
+		try:
+			tmp_rank_list.append(api.papi.ranking_all(mode,x_page, per_page, date=date).response[0])
+		except:
+			pass
 	
 
 	# more fields about response: https://github.com/upbit/pixivpy/wiki/sniffer
-	ranking = rank_list.response[0]
-	#print (ranking)
-	for node in tmp_rank_list:
-		ranking['works'] = ranking['works'] +node['works']
-	###combine all pages info together####
+	try:
+		ranking = rank_list.response[0]
+		#print (ranking)
+		for node in tmp_rank_list:
+			ranking['works'] = ranking['works'] +node['works']
+		###combine all pages info together####
+	except:
+		ranking = None
 	#print ranking
 	#for img in ranking.works:
 		#print img.work
@@ -130,7 +136,9 @@ def fetch_image(api,ranking,per_page):
 		u_name = str(user.name.decode('utf8'))
 		p_name = str(img.work.title.decode('utf8'))
 		pic_name = str(u_name+'-'+p_name+'('+str(id)+')')
-		pic_name = ''.join(e for e in pic_name if e != "/")
+		#pic_name = ''.join(e for e in pic_name if e != "//" or e != "\\")
+		pic_name = pic_name.replace("/","")
+		pic_name = pic_name.replace("\\","")
 		print ("Picture name : %s" % pic_name)
 		###
 		pic_path = "%s/%s.%s" % (path,pic_name,type)
@@ -152,30 +160,35 @@ def fetch_image(api,ranking,per_page):
 
 	
 	
-def main():
+def main(year=2015,month_set=1,per_page=20):
 	api = PixivAPI()
 
 	### change _USERNAME,_PASSWORD first!
 	api.login(_USERNAME, _PASSWORD)
 	###
-	year = '2015'
+	#year = '2015'
 	mode = 'daily'
 	global prepath
-	prepath = '2015_daily'
+	prepath = str(year) + '_daily'
 	import os
 	if not os.path.exists(prepath):
 		os.makedirs(prepath)
 	print ('FOLDER PATH : %s' % prepath)
 	print ('FOLDER PATH : %s' % prepath,file=r_f)
-	for month in range(5,13):
+	for month in range(month_set,13):
 		####
 
 		#mode = 'weekly'
-		per_page = 20
+		#per_page = 20
 		for day in range(1,32):
 			date = '%s-%02d-%02d' % (year,month,day)
 			id_list = []
 			id_list = migrate_sapi_to_papi(api,mode,per_page,date)
+			
+			#check whether it is sucess or not
+			if id_list == None:
+				#didn't get a single response from pixiv
+				continue
 			
 			print ("Total images of this day : %d" % len(id_list['works']))
 			#for database
@@ -186,4 +199,27 @@ def main():
 			fetch_image(api,id_list,per_page)
 
 if __name__ == '__main__':
-	main()
+	try:
+		if sys.argv[1] == '-h':
+			print ("Usage:python database.py [year=2015] [month=1] [per_page=20]")
+			print ("Description: Haha")
+			#print "data_folder : the target folder which the program is going to scan."
+			sys.exit()
+	except:
+		pass
+		
+	if len(sys.argv) > 1:
+		year = sys.argv[1]
+	else:
+		year = 2015
+	if len(sys.argv) > 2:
+		month = int(sys.argv[2])
+	else:
+		month = 1
+	if len(sys.argv) > 3:
+		per_page = sys.argv[3]
+	else:
+		per_page = 20
+		
+		
+	main(year,month,per_page)

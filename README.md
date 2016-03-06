@@ -1,4 +1,4 @@
-Lincese
+License
 ------
 pixiv API fork from https://github.com/upbit/pixivpy
 DATABASE_PIXIV

@@ -1,3 +1,6 @@
+Lincese
+------
+pixiv API fork from https://github.com/upbit/pixivpy
 DATABASE_PIXIV
 -------------
 3.2version

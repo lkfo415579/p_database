@@ -58,6 +58,8 @@ class Pixiv_PAPI(object):
 		}
 
 		r = self.api._requests_call('GET', url, headers=headers, params=params)
+		r.encoding = 'utf-8'
+		print r
 		return self.parse_result(r)
 
 	# 用户资料
@@ -176,4 +178,5 @@ class Pixiv_PAPI(object):
 			params['date'] = date
 
 		r = self.api._requests_call('GET', url, headers=headers, params=params)
+		r.encoding = 'utf8'
 		return self.parse_result(r)

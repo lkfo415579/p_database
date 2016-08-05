@@ -1,6 +1,259 @@
-Start Date:2016-01-12 17:51:02.421976
-FOLDER PATH : 2015_daily
->>> new ranking_all(mode='daily', page=1, per_page=10 , date=2015-01-01)
-http://i3.pixiv.net/img-original/img/2014/12/31/16/22/52/47878234_p0.jpg
-Title : ２０１４最後の夕焼け
+Start Date:2016-08-05 18:35:57.357970
+FOLDER PATH : 2016_daily
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-01)
+http://i1.pixiv.net/img-original/img/2016/07/31/00/14/31/58166256_p0.jpg
+Title : セイバーオルタ　アナザー
 Rank : 1
+http://i1.pixiv.net/img-original/img/2016/08/01/16/52/52/58195544_p0.png
+Title : 足どりは軽やかに
+Rank : 2
+http://i1.pixiv.net/img-original/img/2016/07/31/14/54/14/58174736_p0.png
+Title : 無題
+Rank : 3
+http://i2.pixiv.net/img-original/img/2016/07/31/00/17/58/58166357_p0.jpg
+Title : やせいの かいい？ が とびだしてきた！
+Rank : 4
+http://i2.pixiv.net/img-original/img/2016/07/31/00/37/01/58166861_p0.jpg
+Title : Pokemon Go?
+Rank : 5
+http://i4.pixiv.net/img-original/img/2016/07/31/00/12/09/58166191_p0.png
+Title : Pokémon GO
+Rank : 6
+http://i3.pixiv.net/img-original/img/2016/08/01/16/50/36/58195514_p0.png
+Title : 王の相伴
+Rank : 7
+http://i2.pixiv.net/img-original/img/2016/08/01/00/00/45/58185893_p0.jpg
+Title : ４コマ漫画『来ちゃった』
+Rank : 8
+http://i4.pixiv.net/img-original/img/2016/08/01/00/38/43/58187199_p0.jpg
+Title : レムリン
+Rank : 9
+http://i3.pixiv.net/img-original/img/2016/07/31/19/01/33/58178702_p0.jpg
+Title : ミミッキュとライチュウ
+Rank : 10
+http://i2.pixiv.net/img-original/img/2016/07/31/00/54/11/58167201_p0.jpg
+Title : 「野生のウィロー博士が飛び出してきた！」
+Rank : 11
+http://i2.pixiv.net/img-original/img/2016/07/31/11/41/27/58165925_p0.jpg
+Title : 空心
+Rank : 12
+http://i2.pixiv.net/img-original/img/2016/07/31/00/01/15/58165809_p0.jpg
+Title : 【 新刊 】　ＦＧＯで遊ぶセイバーさん②
+Rank : 13
+http://i4.pixiv.net/img-original/img/2016/08/01/17/33/19/58196099_p0.png
+Title : ★
+Rank : 14
+http://i4.pixiv.net/img-original/img/2016/08/01/00/03/41/58186059_p0.png
+Title : 悪魔ほむらさん
+Rank : 15
+http://i3.pixiv.net/img-original/img/2016/07/31/00/00/01/58165714_p0.png
+Title : パンク
+Rank : 16
+http://i4.pixiv.net/img-original/img/2016/07/31/12/59/09/58173291_p0.png
+Title : Fairy
+Rank : 17
+http://i2.pixiv.net/img-original/img/2016/07/31/00/53/52/58167193_p0.png
+Title : ★
+Rank : 18
+http://i3.pixiv.net/img-original/img/2016/08/01/21/00/25/58199342_p0.jpg
+Title : 君をつれて①
+Rank : 19
+http://i4.pixiv.net/img-original/img/2016/07/31/20/04/08/58179775_p0.jpg
+Title : FGOまとめ【キャプション注意】
+Rank : 20
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-02)
+http://i1.pixiv.net/img-original/img/2016/08/01/16/52/52/58195544_p0.png
+Title : 足どりは軽やかに
+Rank : 1
+http://i3.pixiv.net/img-original/img/2016/08/01/16/50/36/58195514_p0.png
+Title : 王の相伴
+Rank : 2
+http://i4.pixiv.net/img-original/img/2016/08/01/00/38/43/58187199_p0.jpg
+Title : レムリン
+Rank : 3
+http://i1.pixiv.net/img-original/img/2016/08/01/07/04/15/58190868_p0.jpg
+Title : ナツキ・レム
+Rank : 4
+http://i4.pixiv.net/img-original/img/2016/08/01/00/03/41/58186059_p0.png
+Title : 悪魔ほむらさん
+Rank : 5
+http://i4.pixiv.net/img-original/img/2016/08/01/11/25/53/58192403_p0.jpg
+Title : 盛夏
+Rank : 6
+http://i1.pixiv.net/img-original/img/2016/08/01/00/01/11/58185928_p0.png
+Title : ★
+Rank : 7
+http://i3.pixiv.net/img-original/img/2016/08/01/23/18/13/58202682_p0.jpg
+Title : IF
+Rank : 8
+http://i3.pixiv.net/img-original/img/2016/08/01/00/06/41/58186190_p0.jpg
+Title : 赤セイバー
+Rank : 9
+http://i4.pixiv.net/img-original/img/2016/08/01/17/33/19/58196099_p0.png
+Title : ★
+Rank : 10
+http://i1.pixiv.net/img-original/img/2016/08/02/00/30/01/58204812_p0.png
+Title : 赤セイバー
+Rank : 11
+http://i4.pixiv.net/img-original/img/2016/08/01/00/09/04/58186283_p0.jpg
+Title : FGO
+Rank : 12
+http://i3.pixiv.net/img-original/img/2016/08/02/00/08/04/58204218_p0.jpg
+Title : ラムレム
+Rank : 13
+http://i2.pixiv.net/img-original/img/2016/08/01/16/34/12/58186033_p0.jpg
+Title : エミリア(coffee time)
+Rank : 14
+http://i3.pixiv.net/img-original/img/2016/08/01/04/52/00/58190218_p0.jpg
+Title : レムりんと結婚したい
+Rank : 15
+http://i3.pixiv.net/img-original/img/2016/08/01/21/00/25/58199342_p0.jpg
+Title : 君をつれて①
+Rank : 16
+http://i1.pixiv.net/img-original/img/2016/08/01/00/28/02/58186884_p0.png
+Title : レム
+Rank : 17
+http://i1.pixiv.net/img-original/img/2016/08/01/00/54/33/58187564_p0.png
+Title : 子狐
+Rank : 18
+http://i3.pixiv.net/img-original/img/2016/08/01/02/30/02/58189178_p0.jpg
+Title : 雷姆永远守在你身后
+Rank : 19
+http://i4.pixiv.net/img-original/img/2016/08/01/00/00/11/58185747_p0.jpg
+Title : 0801
+Rank : 20
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-03)
+http://i3.pixiv.net/img-original/img/2016/08/02/00/08/04/58204218_p0.jpg
+Title : ラムレム
+Rank : 1
+http://i3.pixiv.net/img-original/img/2016/08/02/02/22/30/58206794_p0.png
+Title : 女の子
+Rank : 2
+http://i1.pixiv.net/img-original/img/2016/08/02/00/30/01/58204812_p0.png
+Title : 赤セイバー
+Rank : 3
+http://i3.pixiv.net/img-original/img/2016/08/02/20/19/28/58216238_p0.png
+Title : ポケモン ダイヤ
+Rank : 4
+http://i1.pixiv.net/img-original/img/2016/08/02/18/10/49/58214220_p0.jpg
+Title : 無名
+Rank : 5
+http://i2.pixiv.net/img-original/img/2016/08/02/00/46/44/58205189_p0.jpg
+Title : ラッシュガード
+Rank : 6
+http://i3.pixiv.net/img-original/img/2016/08/03/00/00/12/58221602_p0.jpg
+Title : -Re:0-
+Rank : 7
+http://i3.pixiv.net/img-original/img/2016/08/02/00/06/22/58204146_p0.jpg
+Title : GO！
+Rank : 8
+http://i4.pixiv.net/img-original/img/2016/08/02/23/22/48/58220531_p0.jpg
+Title : 君をつれて②
+Rank : 9
+http://i4.pixiv.net/img-original/img/2016/08/02/00/11/02/58204311_p0.jpg
+Title : 深夜の世界へ
+Rank : 10
+http://i1.pixiv.net/img-original/img/2016/08/02/17/57/29/58214052_p0.png
+Title : μ'sic Forever ♪♪
+Rank : 12
+http://i3.pixiv.net/img-original/img/2016/08/03/00/11/46/58222114_p0.png
+Title : （・⊝・）
+Rank : 13
+http://i4.pixiv.net/img-original/img/2016/08/02/00/00/02/58203807_p0.png
+Title : ナルメアさん
+Rank : 14
+http://i4.pixiv.net/img-original/img/2016/08/02/13/51/08/58211263_p0.png
+Title : 時雨ちゃんに秋津洲の服
+Rank : 15
+http://i2.pixiv.net/img-original/img/2016/08/03/00/27/00/58222553_p0.png
+Title : ラム レム
+Rank : 16
+http://i1.pixiv.net/img-original/img/2016/08/02/00/04/10/58204068_p0.png
+Title : azzurro
+Rank : 17
+http://i1.pixiv.net/img-original/img/2016/08/02/06/55/46/58208320_p0.jpg
+Title : ナッシーーーーーーーーーーーーーーーーーーーーーーーーーーさん
+Rank : 18
+http://i2.pixiv.net/img-original/img/2016/08/03/01/37/53/58224017_p0.png
+Title : 黄昏の街並み
+Rank : 19
+http://i1.pixiv.net/img-original/img/2016/08/02/00/00/07/58203836_p0.jpg
+Title : RED SOUL
+Rank : 20
+http://i1.pixiv.net/img-original/img/2016/08/03/17/22/48/58231596_p0.png
+Title : 暑中見舞い
+Rank : 21
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-04)
+http://i3.pixiv.net/img-original/img/2016/08/03/00/00/12/58221602_p0.jpg
+Title : -Re:0-
+Rank : 1
+http://i1.pixiv.net/img-original/img/2016/08/03/17/22/48/58231596_p0.png
+Title : 暑中見舞い
+Rank : 2
+http://i1.pixiv.net/img-original/img/2016/08/03/00/11/06/58222088_p0.jpg
+Title : スカサハ
+Rank : 3
+http://i1.pixiv.net/img-original/img/2016/08/03/18/08/44/58232224_p0.png
+Title : 夏コミおまけ
+Rank : 4
+http://i3.pixiv.net/img-original/img/2016/08/03/00/11/46/58222114_p0.png
+Title : （・⊝・）
+Rank : 5
+http://i2.pixiv.net/img-original/img/2016/08/03/00/27/00/58222553_p0.png
+Title : ラム レム
+Rank : 6
+http://i2.pixiv.net/img-original/img/2016/08/03/01/37/53/58224017_p0.png
+Title : 黄昏の街並み
+Rank : 7
+http://i4.pixiv.net/img-original/img/2016/08/04/00/00/09/58239071_p0.jpg
+Title : 君をつれて③
+Rank : 8
+http://i3.pixiv.net/img-original/img/2016/08/03/00/00/44/58221682_p0.png
+Title : 夢!
+Rank : 9
+http://i2.pixiv.net/img-original/img/2016/08/03/00/30/08/58222621_p0.png
+Title : 8/3
+Rank : 10
+http://i4.pixiv.net/img-original/img/2016/08/03/00/20/59/58222395_p0.jpg
+Title : 8/3
+Rank : 11
+http://i2.pixiv.net/img-original/img/2016/08/03/00/00/09/58221593_p0.jpg
+Title : 💗
+Rank : 12
+http://i4.pixiv.net/img-original/img/2016/08/04/00/22/39/58239799_p0.jpg
+Title : link to your blue
+Rank : 13
+http://i2.pixiv.net/img-original/img/2016/08/03/21/39/36/58235721_p0.png
+Title : ＼（Ｔ∇Ｔ）／
+Rank : 14
+http://i1.pixiv.net/img-original/img/2016/08/03/00/04/57/58221864_p0.png
+Title : ♥
+Rank : 15
+http://i1.pixiv.net/img-original/img/2016/08/03/16/43/18/58225384_p0.jpg
+Title : アルジュナ
+Rank : 16
+http://i3.pixiv.net/img-original/img/2016/08/03/18/30/00/58232506_p0.png
+Title : 【C90】水中巫女
+Rank : 17
+http://i2.pixiv.net/img-original/img/2016/08/03/01/17/52/58223645_p0.jpg
+Title : 春風
+Rank : 18
+http://i3.pixiv.net/img-original/img/2016/08/04/00/18/17/58239666_p0.jpg
+Title : おヒメさま
+Rank : 19
+http://i3.pixiv.net/img-original/img/2016/08/04/00/14/54/58239578_p0.jpg
+Title : お年頃にお店番
+Rank : 20
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-05)
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-06)
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-07)
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-08)
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-09)
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-10)
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-11)
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-12)
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-13)
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-14)
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-15)
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-16)
+>>> new ranking_all(mode='daily', page=2, per_page=20 , date=2016-08-17)

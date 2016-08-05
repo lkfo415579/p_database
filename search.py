@@ -66,9 +66,15 @@ if __name__ == '__main__':
 	token = []
 	for x in range(1,len(sys.argv)):
 		token.append(sys.argv[x])
+<<<<<<< HEAD
 	#token = '???'
 	#token = '???'
 	#token = '??'
+=======
+	#token = '艦これ'
+	#token = '甲鉄城'
+	#token = '無名'
+>>>>>>> 7121a9c3031b28e71d4dc90ac92a5bd744473fa2
 	result = Main_database_search(token)
 	files_list = images(result)
 	move(files_list)

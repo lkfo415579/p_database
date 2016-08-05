@@ -10,7 +10,6 @@ import sys
 reload(sys) 
 sys.setdefaultencoding('utf8')
 
-
 from pixivpy2 import *
 
 from database import tool
@@ -49,37 +48,19 @@ def migrate_sapi_to_papi(api,mode,per_page,date):
 	#mode = 'weekly_r18'
 	#per_page = 30
 	#date = '2015-06-12'
-	page = int(per_page/10)
-	
-	print(">>> new ranking_all(mode='%s', page=%d, per_page=%d , date=%s)" % (mode,page,per_page,date),file=r_f)
-	print(">>> new ranking_all(mode='%s', page=%d, per_page=%d , date=%s)" % (mode,page,per_page,date))
+	print(">>> new ranking_all(mode='%s', page=1, per_page=%d , date=%s)" % (mode,per_page,date),file=r_f)
+	print(">>> new ranking_all(mode='%s', page=1, per_page=%d , date=%s)" % (mode,per_page,date))
 	#rank_list = api.sapi.ranking("all", 'day', 1)
 	#rank_list = api.papi.ranking_all('daily', 1, 50)
-	##first one
-	rank_list = api.papi.ranking_all(mode,1, per_page, date=date)
-	
-	tmp_rank_list = []
-	for x_page in range(2,page+1):
-		try:
-			tmp_rank_list.append(api.papi.ranking_all(mode,x_page, per_page, date=date).response[0])
-		except:
-			pass
-	
+	rank_list = api.papi.ranking_all(mode, 1, per_page, date=date)
+	#print rank_list
 
 	# more fields about response: https://github.com/upbit/pixivpy/wiki/sniffer
-	try:
-		ranking = rank_list.response[0]
-		#print (ranking)
-		for node in tmp_rank_list:
-			ranking['works'] = ranking['works'] +node['works']
-		###combine all pages info together####
-	except:
-		ranking = None
+	ranking = rank_list.response[0]
 	#print ranking
 	#for img in ranking.works:
 		#print img.work
 		#print "[%s/%s(id=%s)] %s" % (img.work.user.name, img.work.title, img.work.id, img.work.image_urls.px_480mw)
-	
 	return ranking
 def papi_demo(api):
 	json_result = api.papi.works(46363414)
@@ -137,21 +118,16 @@ def fetch_image(api,ranking,per_page):
 		u_name = str(user.name.decode('utf8'))
 		p_name = str(img.work.title.decode('utf8'))
 		pic_name = str(u_name+'-'+p_name+'('+str(id)+')')
-		#pic_name = ''.join(e for e in pic_name if e != "//" or e != "\\")
-		pic_name = pic_name.replace("/","")
-		pic_name = pic_name.replace("\\","")
+		pic_name = ''.join(e for e in pic_name if e != "/")
 		print ("Picture name : %s" % pic_name)
-		###
-		pic_path = "%s/%s.%s" % (path,pic_name,type)
-		import os.path
-		if not os.path.isfile(pic_path):
-			with open(pic_path, 'wb') as out_file:
-				shutil.copyfileobj(image_data, out_file)
+		
+		with open("%s/%s.%s" % (path,pic_name,type), 'wb') as out_file:
+			shutil.copyfileobj(image_data, out_file)
 		#f = open("%s%s.jpg" % (path,id), 'wb')
 		#f.write(image_data)
 		#f.close()
 		##########end , write into database###
-		work['image_files_name'] = pic_path
+		work['image_files_name'] = "%s/%s.%s" % (path,pic_name,type)
 		tool.database_insertation(work,info_log)
 		
 		if index > per_page-1:
@@ -161,66 +137,36 @@ def fetch_image(api,ranking,per_page):
 
 	
 	
-def main(year=2015,month_set=1,per_page=20):
+def main():
 	api = PixivAPI()
 
 	### change _USERNAME,_PASSWORD first!
 	api.login(_USERNAME, _PASSWORD)
 	###
-	#year = '2015'
+	year = '2014'
 	mode = 'daily'
 	global prepath
-	prepath = str(year) + '_daily'
+	prepath = '2014_daily'
 	import os
 	if not os.path.exists(prepath):
 		os.makedirs(prepath)
 	print ('FOLDER PATH : %s' % prepath)
 	print ('FOLDER PATH : %s' % prepath,file=r_f)
-	for month in range(month_set,13):
+	for month in range(1,13):
 		####
 
 		#mode = 'weekly'
-		#per_page = 20
+		per_page = 20
 		for day in range(1,32):
 			date = '%s-%02d-%02d' % (year,month,day)
 			id_list = []
 			id_list = migrate_sapi_to_papi(api,mode,per_page,date)
-			
-			#check whether it is sucess or not
-			if id_list == None:
-				#didn't get a single response from pixiv
-				continue
-			
-			print ("Total images of this day : %d" % len(id_list['works']))
 			#for database
 			#page = 1
 			global info_log
-			info_log ={'page':int(per_page/10),'mode':mode,'per_page':per_page,'date':date}
+			info_log ={'page':1,'mode':mode,'per_page':per_page,'date':date}
 			#
 			fetch_image(api,id_list,per_page)
 
 if __name__ == '__main__':
-	try:
-		if sys.argv[1] == '-h':
-			print ("Usage:python database.py [year=2015] [month=1] [per_page=20]")
-			print ("Description: Haha")
-			#print "data_folder : the target folder which the program is going to scan."
-			sys.exit()
-	except:
-		pass
-		
-	if len(sys.argv) > 1:
-		year = sys.argv[1]
-	else:
-		year = 2015
-	if len(sys.argv) > 2:
-		month = int(sys.argv[2])
-	else:
-		month = 1
-	if len(sys.argv) > 3:
-		per_page = sys.argv[3]
-	else:
-		per_page = 20
-		
-		
-	main(year,month,per_page)
+	main()

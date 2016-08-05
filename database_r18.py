@@ -10,7 +10,6 @@ import sys
 reload(sys) 
 sys.setdefaultencoding('utf8')
 
-
 from pixivpy2 import *
 
 from database import tool
@@ -168,9 +167,9 @@ def main(year=2015,month_set=1,per_page=20):
 	api.login(_USERNAME, _PASSWORD)
 	###
 	#year = '2015'
-	mode = 'daily'
+	mode = 'daily_r18'
 	global prepath
-	prepath = str(year) + '_daily'
+	prepath = str(year) + '_daily_r18'
 	import os
 	if not os.path.exists(prepath):
 		os.makedirs(prepath)

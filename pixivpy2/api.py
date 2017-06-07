@@ -88,7 +88,7 @@ class PixivAPI(object):
 		except:
 			raise PixivError('Get access_token error! Response: %s' % (token), header=r.headers, body=r.text)
 
-		try:
+		'''try:
 			# get PHPSESSID
 			raw_cookie = r.headers.get('Set-Cookie')
 			for cookie_str in raw_cookie.split('; '):
@@ -97,8 +97,9 @@ class PixivAPI(object):
 			print "Session:", self.session
 
 		except:
-			raise PixivError('Get PHPSESSID error! Set-Cookie: %s' % (r.headers.get('Set-Cookie')), header=r.headers, body=r.text)
-
+			raise PixivError('Get PHPSESSID error! Set-Cookie: %s' % (r.headers.get('Set-Cookie')), header=r.headers, body=r.text)'''
+		self.session = "2198255_1e90384c2634166f21522048633fc1f6"
+		
 		# return auth/token response
 		return token
 
